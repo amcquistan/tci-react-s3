@@ -15,4 +15,6 @@ fi
 
 set -x
 
+aws s3 rm s3://$REACT_BKT_NAME/ --recursive --profile $AWS_PROFILE
+
 aws s3 rb s3://$REACT_BKT_NAME --profile $AWS_PROFILE

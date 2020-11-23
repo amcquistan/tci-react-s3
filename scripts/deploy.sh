@@ -21,4 +21,4 @@ aws s3 cp ./build s3://$REACT_BKT_NAME/ --recursive --profile $AWS_PROFILE
 
 BKT_URL="http://$REACT_BKT_NAME.s3-website.$AWS_REGION.amazonaws.com"
 
-printf "Deployed to: $BKT_URL\n"
+printf "\n\nDeployed to: $BKT_URL\n\n"

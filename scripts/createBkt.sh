@@ -37,10 +37,15 @@ aws s3api put-bucket-policy \
   --policy "{\"Statement\": [{\"Effect\": \"Allow\", \"Principal\": \"*\", \"Action\": \"s3:GetObject\",\"Resource\": \"arn:aws:s3:::$REACT_BKT_NAME/*\"}]}" \
   --profile $AWS_PROFILE
 
+aws s3api put-bucket-cors \
+  --bucket $REACT_BKT_NAME \
+  --cors-configuration file://scripts/cors.json \
+  --profile $AWS_PROFILE
+
 BKT_URL="http://$REACT_BKT_NAME.s3-website.$AWS_REGION.amazonaws.com"
 
 BTK_URL_FILE=$(pwd)/$REACT_BKT_NAME.txt
 
-printf "Bucket website url $BKT_URL saving to $BTK_URL_FILE\n"
+printf "\n\nBucket website url $BKT_URL saving to $BTK_URL_FILE\n\n"
 
 echo $BKT_URL > $BTK_URL_FILE
